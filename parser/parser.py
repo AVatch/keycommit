@@ -38,6 +38,9 @@ def scan_text(text, identifiers, operators, flags, BANDWIDTH):
     return candidates
 
 def is_key(s, flags):
+    """
+    Given a snippet identifies whether or not it is a key
+    """
     for f in flags:
         matches = [m.start() for m in re.finditer(f, s)]
         if matches:
