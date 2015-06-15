@@ -13,5 +13,9 @@ echo "$commit"
 
 # Pipe the commit to the parser
 python "$PWD/keycommit.py" "$commit"
+# Pipe decision to resolver
+less "tmp.txt" | ./resolver.sh
+# Clean up
+rm "tmp.txt"
 
 exit 0

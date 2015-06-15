@@ -23,17 +23,26 @@ def init():
 
 
     # validate candidates
-    print "*"*50
     for k in candidates:
         if candidates[k]["is_key"]:
-            print candidates[k]
             print "KeyCommit has detected the following potential keys in your commit."
             print "Index:\tSnippet:"
             print "-"*50
             print candidates[k]['indecies'][0], "\t", candidates[k]['snippet']
 
             decision = raw_input("Would you like to continue? Y/N: ")
-            print decision
+
+            if decision.lower() == "y":
+                file = open("tmp.txt", "w")
+                file.write("yes")
+                file.close()
+            elif decision.lower() == "n":
+                file = open("tmp.txt", "w")
+                file.write("no")
+                file.close()
+            else:
+                print "made a mistake"
+            
 
 if __name__=="__main__":
     init()
