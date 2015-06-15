@@ -189,3 +189,6 @@ def dedupe_dict(file_dict):
             for k, v in d.iteritems():
                 output_dict[k] = v
     return output_dict
+
+if __name__=="__main__":
+    print "hi there"
