@@ -3,7 +3,7 @@ import re
 
 def scan_text(text, identifiers, operators, flags, BANDWIDTH):
     """
-    Identifies potential api keys in a text file
+    Identifies potential api keys in a string
     """
     candidates = {}
 
@@ -32,14 +32,17 @@ def scan_text(text, identifiers, operators, flags, BANDWIDTH):
                         span = text[i+len(identifier)+j+len(operator):
                             i+len(identifier)+BANDWIDTH+j+len(operator)]
                         candidates[identifier]['is_key'] = is_key(span, flags)
+                        if candidates[identifier]['is_key']:
+                            candidates[identifier]['snippet'] = text[i:
+                                i+len(identifier)+j+len(operator)+BANDWIDTH]
     return candidates
 
 def is_key(s, flags):
     for f in flags:
         matches = [m.start() for m in re.finditer(f, s)]
-        if not matches:
-            return True
-    return False
+        if matches:
+            return False
+    return True
 
 if __name__=="__main__":
     pass

@@ -14,7 +14,7 @@ def init():
     # load the dependency files
     identifiers = load_csv("data/identifiers.csv")
     assignment_operators = load_csv("data/assignment_operators.csv")
-    flags = load_csv("data/assignment_operators.csv")
+    flags = load_csv("data/flags.csv")
 
     # pass commited snippet with data
     # to parser
@@ -26,7 +26,9 @@ def init():
 
 
     # validate candidates
-
+    print "*"*50
+    for k in candidates:
+        print k, "\t", candidates[k]
 
 if __name__=="__main__":
     init()
