@@ -14,10 +14,15 @@ def init():
     # load the dependency files
     identifiers = load_csv("data/identifiers.csv")
     assignment_operators = load_csv("data/assignment_operators.csv")
+    flags = load_csv("data/assignment_operators.csv")
 
     # pass commited snippet with data
     # to parser
-    candidates = scan_text(commit, identifiers, assignment_operators, BANDWIDTH)
+    candidates = scan_text(commit,
+                           identifiers,
+                           assignment_operators,
+                           flags,
+                           BANDWIDTH)
 
 
     # validate candidates

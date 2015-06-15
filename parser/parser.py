@@ -1,24 +1,9 @@
 import re
 
 
-def scan_text(text, identifiers, operators, BANDWIDTH):
+def scan_text(text, identifiers, operators, flags, BANDWIDTH):
     """
     Identifies potential api keys in a text file
-
-    candidates obj:
-        {
-            'identifier': 
-            {
-                'indecies': [1,2,3],
-                'operator': 
-                {
-                        '=': 1,
-                },
-                'is_key': True
-            },
-
-        }
-
     """
     candidates = {}
 
@@ -44,14 +29,17 @@ def scan_text(text, identifiers, operators, BANDWIDTH):
                     candidates[identifier]['operators'][operator] = matches
                     # check if value is key
                     for j in matches:
-                        span = text[i+len(identifier)+j+len(operator):i+len(identifier)+BANDWIDTH+j+len(operator)]
-                        print span
-
-    print "CANDIDATES:\n", candidates
+                        span = text[i+len(identifier)+j+len(operator):
+                            i+len(identifier)+BANDWIDTH+j+len(operator)]
+                        candidates[identifier]['is_key'] = is_key(span, flags)
     return candidates
 
-    def is_key(s):
-        return False
+def is_key(s, flags):
+    for f in flags:
+        matches = [m.start() for m in re.finditer(f, s)]
+        if not matches:
+            return True
+    return False
 
 if __name__=="__main__":
     pass
