@@ -1,54 +1,9 @@
 import re
-import fileinput
-
-
-identifiers = [
-    "secret",
-    "api",
-    "key",
-    "token",
-    "oauth",
-    "account",
-    "access",
-    "facebook",
-    "google",
-    "twitter",
-    "youtube",
-    "accu",
-    "linkedin",
-    "amazon",
-    "twilio",
-    "pinterest",
-    "flickr",
-    "foursquare",
-    "paypal",
-    "stripe",
-    "venmo",
-    "yahoo",
-    "pdx",
-    "yelp",
-    "digg",
-    "soundcloud",
-    "spotify",
-    "rdio",
-    "bitly",
-    "azure",
-    "salesforce",
-    "trello",
-    "wordpress"
-]
 
 front_watermarks = ["akia", "aiza"]
 
 end_watermarks = [".apps.googleusercontent.com"]
 
-assignment_operators = [
-    "=>",
-    ": ",
-    "\":\"",
-    "= ",
-    '='
-]
 
 exclusion_substr = set([
     "env",
@@ -63,15 +18,6 @@ exclusion_substr = set([
 ])
 
 excl_chars = set(["<", ">", "\\", "[", "]", "{", "}", "?", "::", "_", "|", "."])
-
-
-def init():
-    commit = ""
-    for line in fileinput.input():
-        commit += line
-
-    print "The commited snippet is"
-    print commit
 
 
 def scan_text(text):
@@ -187,5 +133,4 @@ def dedupe_dict(file_dict):
     return output_dict
 
 if __name__=="__main__":
-    # Read input
-    init()
+    pass
