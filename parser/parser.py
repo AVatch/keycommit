@@ -1,6 +1,5 @@
-import urllib2
 import re
-from datetime import datetime
+import fileinput
 
 
 identifiers = [
@@ -66,16 +65,13 @@ exclusion_substr = set([
 excl_chars = set(["<", ">", "\\", "[", "]", "{", "}", "?", "::", "_", "|", "."])
 
 
-def get_file(file_path):
-    """
-    @returns: raw url response given a url path
-    """
-    try:
-        response = urllib2.urlopen(file_path).read()
-        return response
-    except Exception as e:
-        # print e, '\t', file_path
-        return ""
+def init():
+    commit = ""
+    for line in fileinput.input():
+        commit += line
+
+    print "The commited snippet is"
+    print commit
 
 
 def scan_text(text):
@@ -191,4 +187,5 @@ def dedupe_dict(file_dict):
     return output_dict
 
 if __name__=="__main__":
-    print "hi there"
+    # Read input
+    init()

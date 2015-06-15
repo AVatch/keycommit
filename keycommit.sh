@@ -12,6 +12,6 @@ echo "snippet:"
 echo "$commit"
 
 # Pipe the commit to the parser
-python "$PWD/parser/parser.py"
+echo "$commit" | python "$PWD/parser/parser.py"
 
 exit 0
