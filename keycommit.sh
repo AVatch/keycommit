@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 # KeyCommit
 # @author: Adrian K Vatchinsky
@@ -5,17 +6,21 @@
 # potential security credentials being being commited.
 
 # Populate this with git hook
-commit=$1
-
+# commit=$1
+commit=`git diff`
 # Debug print statement
-echo "snippet:"
-echo "$commit"
+# echo "snippet:"
+# echo "$commit"
 
 # Pipe the commit to the parser
 python "$PWD/keycommit.py" "$commit"
 # Pipe decision to resolver
-less "tmp.txt" | ./resolver.sh
-# Clean up
-rm "tmp.txt"
-
+if [ ! -f tmp.txt ]; then
+    exit 0
+else
+    # pipe decision to resolver
+    less "tmp.txt" | ./resolver.sh
+    # Clean up
+    rm "tmp.txt"
+fi
 exit 0

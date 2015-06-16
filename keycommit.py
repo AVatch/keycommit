@@ -41,7 +41,9 @@ def init():
                 file.write("no")
                 file.close()
             else:
-                print "made a mistake"
+                file = open("tmp.txt", "w")
+                file.write("no")
+                file.close()
             
 
 if __name__=="__main__":
