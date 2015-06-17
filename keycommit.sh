@@ -5,7 +5,7 @@
 # potential security credentials being being commited.
 
 # Populate this with git hook
-commit=$1
+commit="`git diff`"
 
 # Debug print statement
 echo "snippet:"
