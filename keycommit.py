@@ -4,6 +4,11 @@ from parser.parser import scan_text
 
 BANDWIDTH = 5
 
+
+
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'i-4cuh#oq3cq(1#a9)#jb!ipvfk0ev@(1jl$78!hmpzi&n46w2'
+
 def init():
     # read in the commited snippet
     commit = sys.argv[1]
